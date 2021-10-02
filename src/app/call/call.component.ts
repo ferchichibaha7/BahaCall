@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CallComponent implements OnInit {
   public isCallStarted$: Observable<boolean>;
   private peerId: string;
+  isjoin:boolean
   @ViewChild('localVideo') localVideo: ElementRef<HTMLVideoElement>;
   @ViewChild('remoteVideo') remoteVideo: ElementRef<HTMLVideoElement>;
   constructor(public dialog: MatDialog, private callService: CallService,private activatedRoute: ActivatedRoute,
@@ -35,6 +36,7 @@ export class CallComponent implements OnInit {
   }
 
   public showModal(joinCall: boolean): void {
+    this.isjoin = joinCall
     let dialogData: DialogData = joinCall ? ({ peerId: null, joinCall: true }) : ({ peerId: this.peerId, joinCall: false });
     console.log(dialogData);
 
